@@ -19,7 +19,7 @@ jobs:
       - name: Install CMake
         if : runner.os == 'Windows'
         run: |
-          choco install cmake --installargs 'ADD_CMAKE_TO_PATH=System'
+          choco install cmake
 
       - name: CMake
         run: |
