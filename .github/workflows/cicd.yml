@@ -15,9 +15,15 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
+
+      - name: Install CMake
+        if : runner.os == 'Windows'
+        run: |
+          choco install cmake --installargs 'ADD_CMAKE_TO_PATH=System'
+
       - name: CMake
         run: |
-          cmake -H. -Bbuild
+          cmake -S . -Bbuild
           cmake --build build
       
       - name: Install Clang on Windows
